@@ -23,6 +23,7 @@ body {
   width: 700px;
   height: 150px;
   margin-top: 45px;
+  margin-bottom: 150px;
 }
 .title {
   line-height: .25rem;
@@ -48,4 +49,56 @@ body {
 .score h1 {
   color: hsl(229, 25%, 31%);
   font-size: 4rem;
+}
+.game {
+  background-image: url('../public/images/bg-triangle.svg');
+  background-repeat: no-repeat;
+  background-position: top;
+  width: 100%;
+  height: fit-content;
+  display: grid;
+  grid-template-areas: 
+  "a b c"
+  "d e f";
+  align-items: center;
+  justify-content: center;
+}
+.game img {
+  width: 68px;
+  height: auto;
+}
+.rock, .paper, .scissors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+  border-radius: 100%;
+  height: 150px;
+  width: 150px;
+}
+.rockbg, .paperbg, .scissorsbg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+.rockbg {
+  grid-area: e;
+  background: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+}
+.paperbg {
+  grid-area: a;
+  margin-right: -75px;
+  background: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+}
+.scissorsbg {
+  margin-left: -50px;
+  grid-area: c;
+  background: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+}
+.paperbg, .scissorsbg {
+  margin-top: -100px;
+  margin-bottom: 40px;
 }
