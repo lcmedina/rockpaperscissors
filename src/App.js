@@ -1,38 +1,42 @@
+import { useState } from 'react';
 import './App.css';
+import Header from './components/Header';
 
 function App() {
-  return (
-    <div className="App">
-     <div className="header">
-       <div className="title">
-          <h1>ROCK</h1>
-          <h1>PAPER</h1>
-          <h1>SCISSORS</h1>
+  const [userChoice, setUserChoice] = useState("start")
+
+  if (userChoice !== "start") {
+    return (
+      <div className="App">
+        <Header />
+      <h1>In Play</h1>
+      <button onClick={() => setUserChoice("start")}>reset</button>
+      </div>
+    );
+  } else {
+    return (
+      <div className="App">
+        <Header />
+       <div className="game">
+          <div className="paperbg">
+            <div className="paper" onClick={() => setUserChoice("paper")}>
+              <img src="./images/icon-paper.svg" alt="paper" />
+            </div>
+          </div>
+          <div className="scissorsbg">
+            <div className="scissors" onClick={() => setUserChoice("scissors")}>
+              <img src="./images/icon-scissors.svg" alt="scissors" />
+            </div>
+          </div>
+          <div className="rockbg">
+            <div className="rock" onClick={() => setUserChoice("rock")}>
+              <img src="./images/icon-rock.svg" alt="rock" />
+            </div>
+          </div>
        </div>
-       <div className="score">
-          <h4>SCORE</h4>
-          <h1>12</h1>
-       </div>
-     </div>
-     <div className="game">
-        <div className="paperbg">
-          <div className="paper">
-            <img src="./images/icon-paper.svg" alt="paper" />
-          </div>
-        </div>
-        <div className="scissorsbg">
-          <div className="scissors">
-            <img src="./images/icon-scissors.svg" alt="scissors" />
-          </div>
-        </div>
-        <div className="rockbg">
-          <div className="rock">
-            <img src="./images/icon-rock.svg" alt="rock" />
-          </div>
-        </div>
-     </div>
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default App;
