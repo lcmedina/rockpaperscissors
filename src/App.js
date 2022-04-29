@@ -1,39 +1,33 @@
 import { useState } from 'react';
 import './App.css';
+import GamePlay from './components/GamePlay';
+import GameStart from './components/GameStart';
 import Header from './components/Header';
 
 function App() {
   const [userChoice, setUserChoice] = useState("start")
+  const [score, setScore] = useState(0)
+
+  const handlePaper = () => setUserChoice("paper")
+  const handleScissors = () => setUserChoice("scissors")
+  const handleRock = () => setUserChoice("rock")
+  const handleReset = () => setUserChoice("start")
 
   if (userChoice !== "start") {
     return (
       <div className="App">
-        <Header />
-      <h1>In Play</h1>
-      <button onClick={() => setUserChoice("start")}>reset</button>
+        <Header score={score} />
+        <GamePlay handleReset={handleReset} />
       </div>
     );
   } else {
     return (
       <div className="App">
-        <Header />
-       <div className="game">
-          <div className="paperbg">
-            <div className="paper" onClick={() => setUserChoice("paper")}>
-              <img src="./images/icon-paper.svg" alt="paper" />
-            </div>
-          </div>
-          <div className="scissorsbg">
-            <div className="scissors" onClick={() => setUserChoice("scissors")}>
-              <img src="./images/icon-scissors.svg" alt="scissors" />
-            </div>
-          </div>
-          <div className="rockbg">
-            <div className="rock" onClick={() => setUserChoice("rock")}>
-              <img src="./images/icon-rock.svg" alt="rock" />
-            </div>
-          </div>
-       </div>
+        <Header score={score} />
+        <GameStart 
+        handlePaper={handlePaper}
+        handleScissors={handleScissors}
+        handleRock={handleRock} />
       </div>
     );
   }

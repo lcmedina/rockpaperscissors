@@ -1,4 +1,4 @@
-const Header = () => {
+const Header = ({ score }) => {
     return ( 
         <div className="header">
         <div className="title">
@@ -8,7 +8,7 @@ const Header = () => {
         </div>
         <div className="score">
            <h4>SCORE</h4>
-           <h1>12</h1>
+           <h1>{ score }</h1>
         </div>
       </div>
      );
