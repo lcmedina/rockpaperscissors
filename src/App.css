@@ -50,7 +50,7 @@ body {
   color: hsl(229, 25%, 31%);
   font-size: 4rem;
 }
-.game {
+#game {
   background-image: url('../public/images/bg-triangle.svg');
   background-repeat: no-repeat;
   background-position: top;
@@ -63,7 +63,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-.game img {
+.choiceImg {
   width: 68px;
   height: auto;
 }
@@ -76,7 +76,6 @@ body {
   height: 150px;
   width: 150px;
   box-shadow: inset 0 0.5em 0.3em gray;
-  cursor: pointer;
 }
 .rockbg, .paperbg, .scissorsbg {
   display: flex;
@@ -85,26 +84,32 @@ body {
   width: 200px;
   height: 200px;
   border-radius: 100%;
-  cursor: pointer;
 }
 .rockbg {
-  grid-area: e;
   background: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
 }
+.rock-start {
+  grid-area: e;
+}
 .paperbg {
-  grid-area: a;
-  margin-right: -75px;
   background: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
 }
+.paper-start {
+  grid-area: a;
+  margin-right: -75px;
+}
 .scissorsbg {
-  margin-left: -50px;
-  grid-area: c;
   background: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
 }
-.paperbg, .scissorsbg {
+.scissors-start {
+  margin-left: -50px;
+  grid-area: c;
+}
+.paper-start, .scissors-start {
   margin-top: -100px;
   margin-bottom: 40px;
 }
-.rockbg:hover, .paperbg:hover, .scissorsbg:hover {
+.rock-start:hover, .paper-start:hover, .scissors-start:hover {
   transform: scale(1.05);
+  cursor: pointer;
 }

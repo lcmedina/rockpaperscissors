@@ -4,20 +4,46 @@ import GamePlay from './components/GamePlay';
 import GameStart from './components/GameStart';
 import Header from './components/Header';
 
+
 function App() {
   const [userChoice, setUserChoice] = useState("start")
+  const [computerChoice, setComputerChoice] = useState("")
   const [score, setScore] = useState(0)
 
-  const handlePaper = () => setUserChoice("paper")
-  const handleScissors = () => setUserChoice("scissors")
-  const handleRock = () => setUserChoice("rock")
+  const compPlay = () => {
+    let min = Math.ceil(1);
+    let max = Math.floor(9);
+    let random = Math.floor(Math.random() * (max - min + 1) + 1)
+    
+    if (random > 6) {
+      setComputerChoice("rock")
+    } else if (random > 3) {
+      setComputerChoice("paper")
+    } else {
+      setComputerChoice("scissors")
+    }
+  }
+ 
+  const handlePaper = () => {
+    setUserChoice("paper")
+    compPlay()
+  }
+  const handleScissors = () => {
+    setUserChoice("scissors")
+    compPlay()
+  }
+  const handleRock = () => {
+    setUserChoice("rock")
+    compPlay()
+  }
   const handleReset = () => setUserChoice("start")
+
 
   if (userChoice !== "start") {
     return (
       <div className="App">
         <Header score={score} />
-        <GamePlay handleReset={handleReset} />
+        <GamePlay handleReset={handleReset} userChoice={userChoice} computerChoice={computerChoice} />
       </div>
     );
   } else {

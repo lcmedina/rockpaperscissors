@@ -1,19 +1,19 @@
 const GameStart = ({ handlePaper, handleScissors, handleRock }) => {
     return ( 
-        <div className="game">
-          <div className="paperbg">
+        <div id="game">
+          <div className="paperbg paper-start">
             <div className="paper" onClick={handlePaper}>
-              <img src="./images/icon-paper.svg" alt="paper" />
+              <img className="choiceImg" src="./images/icon-paper.svg" alt="paper" />
             </div>
           </div>
-          <div className="scissorsbg">
+          <div className="scissorsbg scissors-start">
             <div className="scissors" onClick={handleScissors}>
-              <img src="./images/icon-scissors.svg" alt="scissors" />
+              <img className="choiceImg" src="./images/icon-scissors.svg" alt="scissors" />
             </div>
           </div>
-          <div className="rockbg">
+          <div className="rockbg rock-start">
             <div className="rock" onClick={handleRock}>
-              <img src="./images/icon-rock.svg" alt="rock" />
+              <img className="choiceImg" src="./images/icon-rock.svg" alt="rock" />
             </div>
           </div>
        </div>
