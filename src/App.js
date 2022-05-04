@@ -8,42 +8,63 @@ import Header from './components/Header';
 function App() {
   const [userChoice, setUserChoice] = useState("start")
   const [computerChoice, setComputerChoice] = useState("")
+  const [outcome, setOutcome] = useState("")
   const [score, setScore] = useState(0)
 
-  const compPlay = () => {
-    let min = Math.ceil(1);
-    let max = Math.floor(9);
-    let random = Math.floor(Math.random() * (max - min + 1) + 1)
-    
-    if (random > 6) {
-      setComputerChoice("rock")
-    } else if (random > 3) {
-      setComputerChoice("paper")
-    } else {
-      setComputerChoice("scissors")
-    }
+
+  const compare = (userChoice, computerChoice) => {
+    if (
+      (userChoice === "rock" && computerChoice === "scissors") ||
+      (userChoice === "paper" && computerChoice === "rock") ||
+      (userChoice === "scissors" && computerChoice === "paper")) {
+        setOutcome("YOU WIN")
+        setScore(score + 1)
+      } else if (
+        (userChoice === "rock" && computerChoice === "paper") ||
+        (userChoice === "paper" && computerChoice === "scissors") ||
+        (userChoice === "scissors" && computerChoice === "rock")) {
+          setOutcome("YOU LOSE")
+      } else if (userChoice === computerChoice || computerChoice === userChoice){
+        setOutcome("DRAW")
+      }
   }
- 
+
+  const compChoices = ["rock", "paper", "scissors"]
+    // computer picks a random index of the array
+    const compPlay = () => {
+      let random = Math.floor(Math.random() * compChoices.length)
+      setComputerChoice(compChoices[random])
+      return compChoices[random]
+    }
+
+  // set the user's choice and begin the computer play
   const handlePaper = () => {
     setUserChoice("paper")
-    compPlay()
+    compare("paper", compPlay())
   }
   const handleScissors = () => {
     setUserChoice("scissors")
-    compPlay()
+    compare("scissors", compPlay())
   }
   const handleRock = () => {
     setUserChoice("rock")
-    compPlay()
+    compare("rock", compPlay())
   }
-  const handleReset = () => setUserChoice("start")
+  const handleReset = () => {
+    setUserChoice("start")
+    setComputerChoice("")
+  }
 
 
   if (userChoice !== "start") {
     return (
       <div className="App">
         <Header score={score} />
-        <GamePlay handleReset={handleReset} userChoice={userChoice} computerChoice={computerChoice} />
+        <GamePlay 
+        handleReset={handleReset} 
+        userChoice={userChoice} 
+        computerChoice={computerChoice}
+        outcome={outcome} />
       </div>
     );
   } else {
