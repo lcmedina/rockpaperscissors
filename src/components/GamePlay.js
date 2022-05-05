@@ -1,6 +1,6 @@
 import { RockBtn, PaperBtn, ScissorsBtn } from "./Buttons";
 
-const GamePlay = ({ handleReset, userChoice, computerChoice, outcome }) => { 
+const GamePlay = ({ handleReset, userChoice, computerChoice, outcome, ready }) => { 
     return ( 
         <div id="play">
             <div id="userChoice">
@@ -9,8 +9,12 @@ const GamePlay = ({ handleReset, userChoice, computerChoice, outcome }) => {
                 {userChoice === "scissors" ? <ScissorsBtn /> : null}
             </div>
             <div className="outcome">
-                <h1>{ outcome }</h1>
-                <button id="play-again" onClick={handleReset}>PLAY AGAIN</button>
+                { ready ? 
+                    <>
+                    <h1>{ outcome }</h1>
+                    <button id="play-again" onClick={handleReset}>PLAY AGAIN</button>
+                    </>
+                    : null}
             </div>
             <div id="computerChoice">
                 {computerChoice === "rock" ? <RockBtn /> : null}

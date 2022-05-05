@@ -9,6 +9,7 @@ function App() {
   const [userChoice, setUserChoice] = useState("start")
   const [computerChoice, setComputerChoice] = useState("")
   const [outcome, setOutcome] = useState("")
+  const [ready, setReady] = useState(false)
   const [score, setScore] = useState(0)
 
 
@@ -17,6 +18,7 @@ function App() {
       (userChoice === "rock" && computerChoice === "scissors") ||
       (userChoice === "paper" && computerChoice === "rock") ||
       (userChoice === "scissors" && computerChoice === "paper")) {
+        setReady(true)
         setOutcome("YOU WIN")
         setScore(score + 1)
       } else if (
@@ -24,8 +26,10 @@ function App() {
         (userChoice === "paper" && computerChoice === "scissors") ||
         (userChoice === "scissors" && computerChoice === "rock")) {
           setOutcome("YOU LOSE")
+          setReady(true)
       } else if (userChoice === computerChoice || computerChoice === userChoice){
         setOutcome("DRAW")
+        setReady(true)
       }
   }
 
@@ -40,19 +44,26 @@ function App() {
   // set the user's choice and begin the computer play
   const handlePaper = () => {
     setUserChoice("paper")
-    compare("paper", compPlay())
+    setTimeout(() => {
+      compare("paper", compPlay())
+    }, 1000)
   }
   const handleScissors = () => {
     setUserChoice("scissors")
-    compare("scissors", compPlay())
+    setTimeout(() => {
+      compare("scissors", compPlay())
+    }, 1000)
   }
   const handleRock = () => {
     setUserChoice("rock")
-    compare("rock", compPlay())
+    setTimeout(() => {
+      compare("rock", compPlay())
+    }, 1000)
   }
   const handleReset = () => {
     setUserChoice("start")
     setComputerChoice("")
+    setReady(false)
   }
 
 
@@ -64,7 +75,8 @@ function App() {
         handleReset={handleReset} 
         userChoice={userChoice} 
         computerChoice={computerChoice}
-        outcome={outcome} />
+        outcome={outcome}
+        ready={ready} />
       </div>
     );
   } else {

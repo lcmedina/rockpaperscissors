@@ -115,7 +115,7 @@ body {
 }
 #play {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   width: 100%;
 }
@@ -135,6 +135,9 @@ body {
 }
 #play-again:hover {
   color: hsl(349, 70%, 56%);
+}
+.outcome {
+  margin: 10px 50px;
 }
 #userChoice .rockbg, #userChoice .paperbg, #userChoice .scissorsbg, #computerChoice .rockbg, #computerChoice .paperbg,#computerChoice .scissorsbg {
   width: 300px;
