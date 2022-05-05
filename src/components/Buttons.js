@@ -27,5 +27,11 @@ const ScissorsBtn = () => {
       </div>
      );
 }
+
+const Placeholder = () => {
+  return (
+    <div className="placeholder"></div>
+  )
+}
  
-export { RockBtn, PaperBtn, ScissorsBtn };
+export { RockBtn, PaperBtn, ScissorsBtn, Placeholder };

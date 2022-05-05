@@ -9,7 +9,8 @@ function App() {
   const [userChoice, setUserChoice] = useState("start")
   const [computerChoice, setComputerChoice] = useState("")
   const [outcome, setOutcome] = useState("")
-  const [ready, setReady] = useState(false)
+  const [compReady, setCompReady] = useState(false)
+  const [outcomeReady, setOutcomeReady] = useState(false)
   const [score, setScore] = useState(0)
 
 
@@ -17,19 +18,20 @@ function App() {
     if (
       (userChoice === "rock" && computerChoice === "scissors") ||
       (userChoice === "paper" && computerChoice === "rock") ||
-      (userChoice === "scissors" && computerChoice === "paper")) {
-        setReady(true)
-        setOutcome("YOU WIN")
-        setScore(score + 1)
+      (userChoice === "scissors" && computerChoice === "paper") &&
+      outcomeReady) {
+          setCompReady(true)
+          setOutcome("YOU WIN")
+          setScore(score + 1)
       } else if (
         (userChoice === "rock" && computerChoice === "paper") ||
         (userChoice === "paper" && computerChoice === "scissors") ||
         (userChoice === "scissors" && computerChoice === "rock")) {
+          setCompReady(true)
           setOutcome("YOU LOSE")
-          setReady(true)
       } else if (userChoice === computerChoice || computerChoice === userChoice){
-        setOutcome("DRAW")
-        setReady(true)
+          setCompReady(true)
+          setOutcome("DRAW")
       }
   }
 
@@ -46,24 +48,34 @@ function App() {
     setUserChoice("paper")
     setTimeout(() => {
       compare("paper", compPlay())
-    }, 1000)
+      setTimeout(() => {
+        setOutcomeReady(true)
+      }, 500)
+    }, 500)
   }
   const handleScissors = () => {
     setUserChoice("scissors")
     setTimeout(() => {
       compare("scissors", compPlay())
+      setTimeout(() => {
+        setOutcomeReady(true)
+      }, 1000)
     }, 1000)
   }
   const handleRock = () => {
     setUserChoice("rock")
     setTimeout(() => {
       compare("rock", compPlay())
+      setTimeout(() => {
+        setOutcomeReady(true)
+      }, 1000)
     }, 1000)
   }
   const handleReset = () => {
     setUserChoice("start")
     setComputerChoice("")
-    setReady(false)
+    setCompReady(false)
+    setOutcomeReady(false)
   }
 
 
@@ -76,7 +88,8 @@ function App() {
         userChoice={userChoice} 
         computerChoice={computerChoice}
         outcome={outcome}
-        ready={ready} />
+        outcomeReady={outcomeReady}
+        compReady={compReady} />
       </div>
     );
   } else {

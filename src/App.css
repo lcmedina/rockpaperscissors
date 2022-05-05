@@ -87,12 +87,14 @@ body {
 }
 .rockbg {
   background: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+  box-shadow: 0 0.5em hsl(349, 78%, 47%);
 }
 .rock-start {
   grid-area: e;
 }
 .paperbg {
   background: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+  box-shadow: 0 0.5em hsl(230, 96%, 57%);
 }
 .paper-start {
   grid-area: a;
@@ -100,6 +102,7 @@ body {
 }
 .scissorsbg {
   background: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+  box-shadow: 0 0.5em hsl(39, 96%, 44%);
 }
 .scissors-start {
   margin-left: -50px;
@@ -119,9 +122,6 @@ body {
   align-items: center;
   width: 100%;
 }
-#play h1 {
-  font-size: 3.5rem;
-}
 #play-again {
   border: none;
   font-family: 'Barlow Semi Condensed', sans-serif;
@@ -139,6 +139,9 @@ body {
 .outcome {
   margin: 10px 50px;
 }
+.outcome h1 {
+  font-size: 3.5rem;
+}
 #userChoice .rockbg, #userChoice .paperbg, #userChoice .scissorsbg, #computerChoice .rockbg, #computerChoice .paperbg,#computerChoice .scissorsbg {
   width: 300px;
   height: 300px;
@@ -149,4 +152,10 @@ body {
 }
 #userChoice .choiceImg, #computerChoice .choiceImg {
   width: 101px;
+}
+.placeholder {
+  border-radius: 100%;
+  background: hsl(229, 25%, 31%);
+  width: 300px;
+  height: 300px;
 }
